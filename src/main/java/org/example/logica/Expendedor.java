@@ -1,4 +1,4 @@
-package org.example;
+package org.example.logica;
 
 /** Encargado de almacenar Productos, recibir Monedas y entregar el
 producto apropiado si el valor de la moneda es mayor o igual al del

@@ -1,4 +1,4 @@
-package org.example;
+package org.example.logica;
 
 //Clase Principal, usamos esta clase para polimorfismo
 public abstract class Producto{

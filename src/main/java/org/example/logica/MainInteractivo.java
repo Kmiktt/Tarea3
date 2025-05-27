@@ -1,5 +1,4 @@
-package org.example;
-import java.util.ArrayList;
+package org.example.logica;
 import java.util.Scanner;
 
 public class MainInteractivo {

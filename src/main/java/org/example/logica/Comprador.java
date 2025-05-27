@@ -1,4 +1,4 @@
-package org.example;
+package org.example.logica;
 /**Objeto encargado de comprar productos con moneda ingresada al inicializarse, y
  * dejar registrado el sabor y el vuelto de la compra si esta es exitosa.
  * La compra solo se realiza al inicializar el objeto, tras su creación solo se

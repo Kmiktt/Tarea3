@@ -1,6 +1,5 @@
-package org.example;
+package org.example.logica;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {

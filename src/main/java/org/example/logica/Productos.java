@@ -1,4 +1,4 @@
-package org.example;
+package org.example.logica;
 
 /**Enum encargado de almacenar los precios y el valor numerico que
  * ingresar al expendedor para comprar cada producto (Cocacola, Sprite, Fanta,
