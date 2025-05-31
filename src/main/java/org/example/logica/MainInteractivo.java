@@ -21,19 +21,22 @@ public class MainInteractivo {
             switch (a){
                 case 0: {
                     m = new Moneda100();
+                    break;
                 }
                 case 1: {
                     m = new Moneda500();
+                    break;
                 }
                 case 2: {
                     m = new Moneda1000();
+                    break;
                 }
             }
             int b = 0;
             preg = new Scanner(con.reader());
             System.out.println("¿Que producto deseas comprar?");
             for (Productos Var : Productos.values()) {
-                System.out.println("["+Var.getNum()+"] - "+ Var);
+                System.out.println("["+Var.getNum()+"] - "+ Var + " "+ Var.getPrecio());
             }
             b = preg.nextInt();
             try {
