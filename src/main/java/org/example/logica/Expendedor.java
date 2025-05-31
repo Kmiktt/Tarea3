@@ -11,7 +11,7 @@ public class Expendedor {
     private Deposito<Producto> super8;
     private Deposito<Producto> snicker;
     private Deposito<Moneda> monVu;
-    private int precio;
+    private Deposito<Moneda> monDepot;
 
     /**Constructor de Expendedor.
      * Recibe la cantidad i de productos que va a tener cada deposito,
@@ -99,8 +99,24 @@ public class Expendedor {
                 monVu.add(m);
                 throw new NoHayProductoException();
             }
+            //vuelto
             Moneda place;
-            while (vuelto>0){place = new Moneda100(); monVu.add(place); vuelto-=100;}
+            while(vuelto-1000>=0){
+                place = new Moneda1000();
+                monVu.add(place);
+                vuelto-=1000;
+            }
+            while(vuelto-500>=0){
+                place = new Moneda500();
+                monVu.add(place);
+                vuelto-=500;
+            }
+            while(vuelto-100>=0){
+                place = new Moneda100();
+                monVu.add(place);
+                vuelto-=100;
+            }
+            monDepot.add(m);
         }
         else throw new PagoIncorrectoException();
         producto=p;
