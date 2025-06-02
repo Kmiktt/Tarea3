@@ -4,6 +4,7 @@ package org.example.logica;
 producto apropiado si el valor de la moneda es mayor o igual al del
 producto*/
 public class Expendedor {
+    private Producto producto=null;
     private Deposito<Producto> coca;
     private Deposito<Producto> sprite;
     private Deposito<Producto> fanta;
@@ -45,7 +46,7 @@ public class Expendedor {
      * @param m Moneda ingresada al expendedor, se obtiene su valor con m.getValor()
      * @param x Numero ingresado al expendedor, se utiliza para checkear que producto
      * quiere comprar el comprador*/
-    public Producto comprarProducto(Moneda m, int x) throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException{
+    public void comprarProducto(Moneda m, int x) throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException{
         Producto p=null;
         int vuelto=0;
         boolean check = false;
@@ -102,11 +103,18 @@ public class Expendedor {
             while (vuelto>0){place = new Moneda100(); monVu.add(place); vuelto-=100;}
         }
         else throw new PagoIncorrectoException();
-        return p;
+        producto=p;
     }
     /** Getter de moneda en deposito de vuelto, null si no quedan monedas
      * @return Moneda de vuelto */
     public Moneda getVuelto(){
         return monVu.get();
+    }
+
+    //saca el producto de la cajita
+    public Producto getProducto() {
+        Producto aux=producto;
+        producto=null;
+        return aux;
     }
 }

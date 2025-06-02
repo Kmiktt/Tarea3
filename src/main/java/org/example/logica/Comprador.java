@@ -6,13 +6,15 @@ package org.example.logica;
 public class Comprador{
     private String sabor;
     private int vuelto = 0;
+    public Producto manoProd;
     /**Metodo constructor, se encarga de intentar comprar el producto indicada con la
      * moneda que se le entrega, registrando el sabor de este y el vuelto que se le devolvió.
      * @param m Moneda para comprar el producto indicado
      * @param cualBebida Numero que se le ingresara al expendedor para comprar el producto indicado
      * @param exp Referencia al expendedor al cual se le va a comprar el Producto*/
     public Comprador(Moneda m, int cualBebida, Expendedor exp) throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException {
-        Producto b = exp.comprarProducto(m,cualBebida);
+        exp.comprarProducto(m,cualBebida);
+        Producto b = exp.getProducto();
         if (b==null) sabor = null;
         else sabor = b.consumir();
         Moneda t = exp.getVuelto();
