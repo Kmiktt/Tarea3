@@ -1,4 +1,7 @@
 package org.example.logica;
+
+import java.util.ArrayList;
+
 /**Objeto encargado de comprar productos con moneda ingresada al inicializarse, y
  * dejar registrado el sabor y el vuelto de la compra si esta es exitosa.
  * La compra solo se realiza al inicializar el objeto, tras su creación solo se
@@ -7,30 +10,40 @@ public class Comprador{
     private String sabor;
     private int vuelto = 0;
     public Producto manoProd;
+    private Expendedor expen;
+    private ArrayList<Moneda> monedero;
     /**Metodo constructor, se encarga de intentar comprar el producto indicada con la
      * moneda que se le entrega, registrando el sabor de este y el vuelto que se le devolvió.
-     * @param m Moneda para comprar el producto indicado
-     * @param cualBebida Numero que se le ingresara al expendedor para comprar el producto indicado
      * @param exp Referencia al expendedor al cual se le va a comprar el Producto*/
-    public Comprador(Moneda m, int cualBebida, Expendedor exp) throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException {
-        exp.comprarProducto(m,cualBebida);
-        Producto b = exp.getProducto();
-        if (b==null) sabor = null;
-        else sabor = b.consumir();
-        Moneda t = exp.getVuelto();
-        while (t!=null){
-            vuelto+=t.getValor();
-            t=exp.getVuelto();
+    public Comprador(Expendedor exp)  {
+        expen=exp;
+    }
+
+    public void ComprarBebida(int i,int cualBebida) throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException {
+        Moneda m;
+        m=monedero.remove(i);
+        expen.comprarProducto(m,cualBebida);
+    }
+
+    public void getBebida(){
+        manoProd=expen.getProducto();
+        if (manoProd==null) sabor = null;
+        else sabor = manoProd.consumir();
+    }
+
+    public void SacarVuelto(){
+        Moneda t = expen.getVuelto();
+        while (t!=null) {
+            vuelto += t.getValor();
+            t = expen.getVuelto();
         }
     }
-    /**Getter de sabor, devuelve null si hubo un error en la compra
-     * @return String con sabor del producto*/
+
     public String queConsumiste(){
         return sabor;
     }
-    /**Getter de vuelto, valor default 0 en caso de que la compra no se realize
-     * @return Entero que representa dinero restante de la compra*/
-    public int cuantoVuelto(){
-        return vuelto;
+
+    public ArrayList<Moneda> getMonedero() {
+        return monedero;
     }
 }
