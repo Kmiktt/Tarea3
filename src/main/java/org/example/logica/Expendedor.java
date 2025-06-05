@@ -133,4 +133,24 @@ public class Expendedor {
         producto=null;
         return aux;
     }
+
+    public <T> Deposito<Producto> getCoca(){
+        return coca;
+    }
+
+    public Deposito<Producto> getSuper8() {
+        return super8;
+    }
+
+    public Deposito<Producto> getFanta() {
+        return fanta;
+    }
+
+    public Deposito<Producto> getSnicker() {
+        return snicker;
+    }
+
+    public Deposito<Producto> getSprite() {
+        return sprite;
+    }
 }

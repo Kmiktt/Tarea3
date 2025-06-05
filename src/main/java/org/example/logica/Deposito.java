@@ -24,4 +24,10 @@ public class Deposito<T> {
         if ((al.size()!=0)) return al.remove(0);
         else return null;
     }
+    public T indGet(int i){
+        return al.get(i);
+    }
+    public int getSize(){
+        return al.size();
+    }
 }
