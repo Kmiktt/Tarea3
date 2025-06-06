@@ -26,15 +26,15 @@ public class Expendedor {
         monVu = new Deposito<Moneda>();
         Producto b;
         for (int x =0; x<i; x++){
-            b= new CocaCola();
+            b= new CocaCola("COCA"+Integer.toString((int)(Math.random() * 1000)));
             coca.add(b);
-            b = new Sprite();
+            b = new Sprite("SPRT"+Integer.toString((int)(Math.random() * 1000)));
             sprite.add(b);
-            b = new Fanta();
+            b = new Fanta("FNTA"+Integer.toString((int)(Math.random() * 1000)));
             fanta.add(b);
-            b = new Snickers();
+            b = new Snickers("SNCK"+Integer.toString((int)(Math.random() * 1000)));
             snicker.add(b);
-            b = new Super8();
+            b = new Super8("SUPR"+Integer.toString((int)(Math.random() * 1000)));
             super8.add(b);
         }
     }
