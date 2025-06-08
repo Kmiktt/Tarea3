@@ -16,18 +16,21 @@ public class PanelExpendedor extends JPanel {
     private PanelDeposito pfanta;
     private PanelDeposito psnickers;
     private PanelDeposito psuper8;
+    private PanelMonedas pmonedas;
     private BufferedImage img;
     private ImgDim dim;
     public PanelExpendedor() {
         super();
         dim = ImgDim.EXPENDEDOR;
         exp = new Expendedor(3);
-        try {img = ImageIO.read(new File("Tarea3/src/main/resources/expendedor.png"));}
+        try {img = ImageIO.read(new File("src/main/resources/expendedor.png"));}
         catch (IOException e) {
             e.printStackTrace();
             img = null;
         }
         this.setLayout(null);
+        pmonedas = new PanelMonedas(exp.getMonVuelto(),500,440);
+        this.add(pmonedas);
         psprite = new PanelDeposito(exp.getSprite(), "Sprite.png", ImgDim.BEBIDA, 260, 55);
         this.add(psprite);
         pfanta = new PanelDeposito(exp.getFanta(), "Fanta.png", ImgDim.BEBIDA, 60, 210);
@@ -50,6 +53,7 @@ public class PanelExpendedor extends JPanel {
         psnickers.paintComponent(g);
         psuper8.paintComponent(g);
         pcoca.paintComponent(g);
+        pmonedas.paintComponent(g);
     }
     public static Expendedor getExpendedor(){
         return exp;

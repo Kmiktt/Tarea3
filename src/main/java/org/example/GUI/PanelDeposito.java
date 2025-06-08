@@ -1,6 +1,7 @@
 package org.example.GUI;
 
 import org.example.logica.Deposito;
+import org.example.logica.Producto;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -10,16 +11,15 @@ import java.io.File;
 import java.io.IOException;
 
 public class PanelDeposito extends JPanel {
-    private Deposito dp;
+    private Deposito<Producto>dp;
     private BufferedImage img;
     private ImgDim dims;
     private String fna;
     public PanelDeposito(Deposito d, String fname, ImgDim di, int x, int y){
         super();
         dp = d;
-        fna=fname;
         dims = di;
-        try {img = ImageIO.read(new File("Tarea3/src/main/resources/"+fname));}
+        try {img = ImageIO.read(new File("src/main/resources/"+fname));}
         catch (IOException e) {
             e.printStackTrace();
             img = null;
@@ -42,8 +42,9 @@ public class PanelDeposito extends JPanel {
                 g2.setComposite(apc);
                 g2.drawImage(img,px,py,dims.getWi(), (int) (dims.getHe()*(Math.pow(0.98,i))),null);
                 if (i==0){
+                    fna = dp.indGet(i).getSerie();
                     g2.setColor(Color.black);
-                    g2.fillRect(px,py+ImgDim.BEBIDA.getHe()-30-dims.getMdy(),fna.length()*12,30);
+                    g2.fillRect(px,py+ImgDim.BEBIDA.getHe()-30-dims.getMdy(),fna.length()*14,30);
                     g2.setFont(new Font("Arial",Font.BOLD,20));
                     g2.setColor(new Color(105,200,15));
                     g2.drawString(fna, px+5,py+ImgDim.DEPOSITO.getHe()-50-dims.getMdy());

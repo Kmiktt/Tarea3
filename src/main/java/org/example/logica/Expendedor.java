@@ -24,6 +24,9 @@ public class Expendedor {
         super8 = new Deposito<Producto>();
         snicker = new Deposito<Producto>();
         monVu = new Deposito<Moneda>();
+        monVu.add(new Moneda500());
+        monVu.add(new Moneda500());
+        monVu.add(new Moneda500());
         Producto b;
         for (int x =0; x<i; x++){
             b= new CocaCola("COCA"+Integer.toString((int)(Math.random() * 1000)));
@@ -152,5 +155,9 @@ public class Expendedor {
 
     public Deposito<Producto> getSprite() {
         return sprite;
+    }
+
+    public Deposito<Moneda> getMonVuelto() {
+        return monVu;
     }
 }
