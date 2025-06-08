@@ -8,7 +8,6 @@ import java.util.ArrayList;
  * puede consultar por el sabor y por el vuelto.*/
 public class Comprador{
     private String sabor;
-    private int vuelto = 0;
     public Producto manoProd;
     private Expendedor expen;
     private ArrayList<Moneda> monedero;
@@ -30,15 +29,19 @@ public class Comprador{
         if (manoProd==null) sabor = null;
         else sabor = manoProd.consumir();
     }
-
+    /**
+    Metodo que Saca el vuelto de un Expendedor asignado y lo deja en su monedero
+     */
     public void SacarVuelto(){
         Moneda t = expen.getVuelto();
         while (t!=null) {
-            vuelto += t.getValor();
+            monedero.add(t);
             t = expen.getVuelto();
         }
     }
-
+    public void AgregarMoneda(Moneda o){
+        monedero.add(o);
+    }
     public String queConsumiste(){
         return sabor;
     }
