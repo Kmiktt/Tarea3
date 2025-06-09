@@ -65,7 +65,7 @@ public class PanelComprador extends JPanel {
             if (px>=v.rx && px <=v.rx+v.rw && py>=v.ry && py<=v.ry+v.rh) break;
             i++;
         }
-        if (i>=1 && i>=5) {
+        if (i>=1 && i<=5) {
             try {
                 c.ComprarBebida(0,i);
             } catch (PagoIncorrectoException e) {

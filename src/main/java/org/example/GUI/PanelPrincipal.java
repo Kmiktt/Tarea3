@@ -37,10 +37,9 @@ public class PanelPrincipal extends JPanel implements MouseListener{
     public void mousePressed(MouseEvent e) {
         int x = e.getX();
         int y = e.getY();
-        System.out.println(x + " - " + y);
         if (x<this.getWidth()/2) pe.procesarClick(x,y);
         if (x>this.getWidth()/2){
-            x=x/2;
+            x=x-this.getWidth()/2;
             pc.procesarClick(x,y);
         }
         this.repaint();

@@ -1,5 +1,7 @@
 package org.example.logica;
 
+import org.example.GUI.PanelExpendedor;
+
 import java.util.ArrayList;
 
 /**Objeto encargado de comprar productos con moneda ingresada al inicializarse, y
@@ -16,10 +18,10 @@ public class Comprador{
     public Comprador(Expendedor exp)  {
         expen=exp;
         monedero = new ArrayList<Moneda>();
-        monedero.add(new Moneda1000());
     }
 
     public void ComprarBebida(int i,int cualBebida) throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException {
+        expen = PanelExpendedor.getExpendedor();
         Moneda m;
         m=monedero.remove(i);
         expen.comprarProducto(m,cualBebida);

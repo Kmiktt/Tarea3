@@ -4,11 +4,11 @@ package org.example.logica;
  * ingresar al expendedor para comprar cada producto (Cocacola, Sprite, Fanta,
  * Super8 y Snickers)*/
 public enum Productos {
-    COCACOLA(600,1),
+    COCACOLA(600,3),
     SPRITE(700,2),
-    FANTA(600,3),
-    SUPER8(400,4),
-    SNICKER(500,5);
+    FANTA(600,1),
+    SUPER8(400,5),
+    SNICKER(500,4);
 
     private int precio;
     private int num;

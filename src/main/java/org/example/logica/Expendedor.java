@@ -24,11 +24,8 @@ public class Expendedor {
         super8 = new Deposito<Producto>();
         snicker = new Deposito<Producto>();
         monVu = new Deposito<Moneda>();
+        monDepot = new Deposito<Moneda>();
         Producto b;
-        producto = new Sprite("loaoo");
-        monVu.add(new Moneda1000());
-        monVu.add(new Moneda500());
-        monVu.add(new Moneda100());
         for (int x =0; x<i; x++){
             añadirCoca();
             añadirSprite();
