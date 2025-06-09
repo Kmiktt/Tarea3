@@ -25,6 +25,7 @@ public class PanelCompra extends JPanel {
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
+        p = PanelExpendedor.getExpendedor().showProducto();
         String check = p.consumir();
         try {img = ImageIO.read(new File("src/main/resources/"+check+".png"));}
         catch (IOException e) {
