@@ -17,6 +17,7 @@ public class PanelExpendedor extends JPanel {
     private PanelDeposito psnickers;
     private PanelDeposito psuper8;
     private PanelMonedas pmonedas;
+    private PanelCompra pcompra;
     private BufferedImage img;
     private ImgDim dim;
     public PanelExpendedor() {
@@ -29,6 +30,8 @@ public class PanelExpendedor extends JPanel {
             img = null;
         }
         this.setLayout(null);
+        pcompra = new PanelCompra(exp.showProducto(),200,560);
+        this.add(pcompra);
         pmonedas = new PanelMonedas(exp.getMonVuelto(),500,440);
         this.add(pmonedas);
         psprite = new PanelDeposito(exp.getSprite(), "Sprite.png", ImgDim.BEBIDA, 260, 55);
@@ -54,6 +57,7 @@ public class PanelExpendedor extends JPanel {
         psuper8.paintComponent(g);
         pcoca.paintComponent(g);
         pmonedas.paintComponent(g);
+        pcompra.paintComponent(g);
     }
     public static Expendedor getExpendedor(){
         return exp;

@@ -1,7 +1,7 @@
 package org.example.GUI;
 import javax.swing.JFrame;
 import java.awt.*;
-
+/**Ventana base del programa, contiene el PanelPrincipal*/
 public class Ventana extends JFrame {
     private PanelPrincipal pp;
     public Ventana(){

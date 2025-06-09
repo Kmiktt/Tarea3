@@ -32,7 +32,7 @@ class Sprite extends Bebida {
     }
 
     public String consumir(){
-        return ("sprite");
+        return ("Sprite");
     }
 }
 class CocaCola extends Bebida {
@@ -40,7 +40,7 @@ class CocaCola extends Bebida {
         super(x);
     }
     public String consumir(){
-        return ("cocacola");
+        return ("CocaCola");
     }
 }
 class Fanta extends Bebida {
@@ -48,18 +48,18 @@ class Fanta extends Bebida {
         super(x);
     }
     public String consumir(){
-        return ("fanta");
+        return ("Fanta");
     }
 }
 class Super8 extends Dulce {
     public Super8(String x){
         super(x);
     }
-    public String consumir(){return ("super8");}
+    public String consumir(){return ("Super8");}
 }
 class Snickers extends Dulce {
     public Snickers(String x){
         super(x);
     }
-    public String consumir(){return ("snickers");}
+    public String consumir(){return ("Snickers");}
 }
