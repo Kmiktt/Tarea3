@@ -3,6 +3,7 @@ package org.example.logica;
 import org.example.GUI.PanelExpendedor;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**Objeto encargado de comprar productos con moneda ingresada al inicializarse, y
  * dejar registrado el sabor y el vuelto de la compra si esta es exitosa.
@@ -47,7 +48,7 @@ public class Comprador{
     public void AgregarMoneda(Moneda o){
         monedero.add(o);
         monedero.sort(null);
-        monedero.reversed();
+        Collections.reverse(monedero);
     }
 
     public ArrayList<Moneda> getMonedero() {

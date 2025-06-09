@@ -33,6 +33,7 @@ public class Expendedor {
             añadirSnickers();
             añadirSuper8();
         }
+        monDepot=new Deposito<Moneda>();
     }
 
     public void añadirCoca(){

@@ -1,6 +1,13 @@
 package org.example.GUI;
 
-import org.example.logica.*;
+import org.example.logica.Comprador;
+import org.example.logica.Producto;
+import org.example.logica.Moneda1000;
+import org.example.logica.Moneda500;
+import org.example.logica.Moneda100;
+import org.example.logica.NoHayProductoException;
+import org.example.logica.PagoIncorrectoException;
+import org.example.logica.PagoInsuficienteException;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -14,6 +21,8 @@ import java.io.IOException;
 public class PanelComprador extends JPanel {
     private BufferedImage img;
     private static Comprador c;
+    private Comprador comprador;
+    private PanelBilletera pb;
     public PanelComprador(){
         super();
         c = new Comprador(PanelExpendedor.getExpendedor());
@@ -23,7 +32,11 @@ public class PanelComprador extends JPanel {
             img = null;
         }
         this.setBackground(new Color(220, 220, 250));
-
+        comprador=new Comprador(PanelExpendedor.getExpendedor());
+        comprador.AgregarMoneda(new Moneda1000());
+        comprador.AgregarMoneda(new Moneda500());
+        comprador.AgregarMoneda(new Moneda100());
+        pb = new PanelBilletera(comprador.getMonedero(),200,600);
     }
     @Override
     public void paintComponent(Graphics g){
@@ -34,6 +47,7 @@ public class PanelComprador extends JPanel {
         g2.drawImage(img,(this.getWidth()/2-anc)+100,300 ,anc,alt,null);
         dibujarProductoEnMano(g2, anc, alt);
         dibujarOpciones(g2);
+        pb.paintComponent(g);
     }
     private void dibujarProductoEnMano(Graphics2D g2, int anc, int alt){
         Producto p = c.manoProd;
@@ -60,6 +74,7 @@ public class PanelComprador extends JPanel {
         ButtonBounds.Super8.dibujarOpcion(g2,"Comprar Super8");
     }
     public void procesarClick(int px, int py){
+        pb.procesarClick(px,py);
         int i = 1;
         for (ButtonBounds v : ButtonBounds.values()){
             if (px>=v.rx && px <=v.rx+v.rw && py>=v.ry && py<=v.ry+v.rh) break;
@@ -67,7 +82,7 @@ public class PanelComprador extends JPanel {
         }
         if (i>=1 && i<=5) {
             try {
-                c.ComprarBebida(0,i);
+                c.ComprarBebida(pb.getSel(),i);
             } catch (PagoIncorrectoException e) {
                 throw new RuntimeException(e);
             } catch (PagoInsuficienteException e) {
@@ -76,6 +91,7 @@ public class PanelComprador extends JPanel {
                 throw new RuntimeException(e);
             }
         }
+
     }
     public static Comprador getC(){
         return c;
