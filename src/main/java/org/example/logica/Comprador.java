@@ -7,7 +7,6 @@ import java.util.ArrayList;
  * La compra solo se realiza al inicializar el objeto, tras su creación solo se
  * puede consultar por el sabor y por el vuelto.*/
 public class Comprador{
-    private String sabor;
     public Producto manoProd;
     private Expendedor expen;
     private ArrayList<Moneda> monedero;
@@ -26,11 +25,9 @@ public class Comprador{
 
     public void getBebida(){
         manoProd=expen.getProducto();
-        if (manoProd==null) sabor = null;
-        else sabor = manoProd.consumir();
     }
     /**
-    Metodo que Saca el vuelto de un Expendedor asignado y lo deja en su monedero
+    Metodo que Saca el vuelto del Expendedor asignado y lo deja en su monedero
      */
     public void SacarVuelto(){
         Moneda t = expen.getVuelto();
@@ -39,11 +36,14 @@ public class Comprador{
             t = expen.getVuelto();
         }
     }
+    /**
+     Metodo que agrega una moneda asignada en su monedero
+     * @param o Referencia a Moneda que quieras agregar
+     */
     public void AgregarMoneda(Moneda o){
         monedero.add(o);
-    }
-    public String queConsumiste(){
-        return sabor;
+        monedero.sort(null);
+        monedero.reversed();
     }
 
     public ArrayList<Moneda> getMonedero() {
