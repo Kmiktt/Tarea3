@@ -21,7 +21,6 @@ import java.io.IOException;
 public class PanelComprador extends JPanel {
     private BufferedImage img;
     private static Comprador c;
-    private Comprador comprador;
     private PanelBilletera pb;
     public PanelComprador(){
         super();
@@ -32,11 +31,10 @@ public class PanelComprador extends JPanel {
             img = null;
         }
         this.setBackground(new Color(220, 220, 250));
-        comprador=new Comprador(PanelExpendedor.getExpendedor());
-        comprador.AgregarMoneda(new Moneda1000());
-        comprador.AgregarMoneda(new Moneda500());
-        comprador.AgregarMoneda(new Moneda100());
-        pb = new PanelBilletera(comprador.getMonedero(),200,600);
+        c.AgregarMoneda(new Moneda1000());
+        c.AgregarMoneda(new Moneda500());
+        c.AgregarMoneda(new Moneda100());
+        pb = new PanelBilletera(c.getMonedero(),200,600);
     }
     @Override
     public void paintComponent(Graphics g){
