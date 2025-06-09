@@ -5,6 +5,7 @@ public enum ImgDim {
     DULCE(80,20,70),
     EXPENDEDOR(600,720,0),
     DEPOSITO(180,160,0),
+    COMPRADOR(200,400,200),
     MONEDA(35,35,0);
 
     private int wi;

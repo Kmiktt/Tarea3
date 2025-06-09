@@ -1,6 +1,9 @@
 package org.example.GUI;
 
+import org.example.logica.Comprador;
+import org.example.logica.Deposito;
 import org.example.logica.Expendedor;
+import org.example.logica.Producto;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -22,6 +25,7 @@ public class PanelExpendedor extends JPanel {
     private PanelCompra pcompra;
     private BufferedImage img;
     private ImgDim dim;
+    private final int productosBase = 10;
     /**Constructor del PanelExpendedor, crea a todos los PanelDeposito, al PanelMonedas
      * y PanelCompra y les asigna las coordenadas (absolutas) correspondientes. Ademas,
      * crea el expendedor que va a estar dentro del panel*/
@@ -36,11 +40,11 @@ public class PanelExpendedor extends JPanel {
         }
         this.setLayout(null);
         this.setBackground(new Color(220,255,220,100));
-        pcompra = new PanelCompra(exp.showProducto(),200,560);
+        pcompra = new PanelCompra(200,560);
         this.add(pcompra);
         pmonedas = new PanelMonedas(exp.getMonVuelto(),500,440);
         this.add(pmonedas);
-        psprite = new PanelDeposito(exp.getSprite(), "Sprite.png", ImgDim.BEBIDA, 265, 55);
+        psprite = new PanelDeposito(exp.getSprite(), "Sprite.png", ImgDim.BEBIDA, 260, 55);
         this.add(psprite);
         pfanta = new PanelDeposito(exp.getFanta(), "Fanta.png", ImgDim.BEBIDA, 260, 210);
         this.add(pfanta);
@@ -73,6 +77,31 @@ public class PanelExpendedor extends JPanel {
      * @return Expendedor static que se crea en PanelExpendedor*/
     public static Expendedor getExpendedor(){
         return exp;
+    }
+
+    public void rellenarProducto(int i){
+        switch (i){
+            case 1: while (exp.getSprite().getSize()<productosBase)exp.añadirSprite();break;
+            case 2: while (exp.getSnicker().getSize()<productosBase) exp.añadirSnickers(); break;
+            case 3: while (exp.getFanta().getSize()<productosBase)exp.añadirFanta(); break;
+            case 4: while (exp.getSuper8().getSize()<productosBase)exp.añadirSuper8(); break;
+            case 5: while (exp.getCoca().getSize()<productosBase)exp.añadirCoca(); break;
+            default: return;
+        }
+    }
+
+    public void procesarClick(int px, int py){
+        if (px>=60 && px<=440 && py>=55 && py<=515){
+            int x = (px-60)/200 + ((py-55)/155)*2;
+            rellenarProducto(x);
+        }
+        if (px>=500 && py>=440 && px<=600 && py<=490) {
+            PanelComprador.getC().SacarVuelto();
+        }
+        if (px>=200 && py>=560 && px<=500 && py<=630){
+            PanelComprador.getC().getBebida();
+        }
+
     }
 }
 

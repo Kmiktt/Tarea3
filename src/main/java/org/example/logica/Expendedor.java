@@ -14,8 +14,8 @@ public class Expendedor {
     private Deposito<Moneda> monDepot;
 
     /**Constructor de Expendedor.
-     * Recibe la cantidad i de productos que va a tener cada deposito,
-     * y le entrega a cada deposito de Producto i del producto correspondiente.
+     * Recibe la cantidad i de productos que va a tener cada depósito,
+     * y le entrega a cada depósito de Producto i del producto correspondiente.
      * @param i La cantidad de productos que tendrá cada depósito.*/
     public Expendedor(int i){
         coca = new Deposito<Producto>();
@@ -24,23 +24,39 @@ public class Expendedor {
         super8 = new Deposito<Producto>();
         snicker = new Deposito<Producto>();
         monVu = new Deposito<Moneda>();
-        monVu.add(new Moneda500());
-        monVu.add(new Moneda500());
-        monVu.add(new Moneda500());
         Producto b;
-        producto = new Sprite("Test");
+        producto = new Sprite("loaoo");
+        monVu.add(new Moneda1000());
+        monVu.add(new Moneda500());
+        monVu.add(new Moneda100());
         for (int x =0; x<i; x++){
-            b= new CocaCola("COCA"+Integer.toString((int)(Math.random() * 1000)));
-            coca.add(b);
-            b = new Sprite("SPRT"+Integer.toString((int)(Math.random() * 1000)));
-            sprite.add(b);
-            b = new Fanta("FNTA"+Integer.toString((int)(Math.random() * 1000)));
-            fanta.add(b);
-            b = new Snickers("SNCK"+Integer.toString((int)(Math.random() * 1000)));
-            snicker.add(b);
-            b = new Super8("SUPR"+Integer.toString((int)(Math.random() * 1000)));
-            super8.add(b);
+            añadirCoca();
+            añadirSprite();
+            añadirFanta();
+            añadirSnickers();
+            añadirSuper8();
         }
+    }
+
+    public void añadirCoca(){
+        Producto b= new CocaCola("COCA"+Integer.toString((int)(Math.random() * 1000)));
+        coca.add(b);
+    }
+    public void añadirSprite(){
+        Producto b = new Sprite("SPRT"+Integer.toString((int)(Math.random() * 1000)));
+        sprite.add(b);
+    }
+    public void añadirFanta(){
+        Producto b = new Fanta("FNTA"+Integer.toString((int)(Math.random() * 1000)));
+        fanta.add(b);
+    }
+    public void añadirSnickers(){
+        Producto b = new Snickers("SNCK"+Integer.toString((int)(Math.random() * 1000)));
+        snicker.add(b);
+    }
+    public void añadirSuper8(){
+        Producto b = new Super8("SUPR"+Integer.toString((int)(Math.random() * 1000)));
+        super8.add(b);
     }
     /**El expendedor recibe una moneda y el número del producto a comprar,
      * y checkea si es que este numero concuerda con el de algún producto (asignados
@@ -50,6 +66,7 @@ public class Expendedor {
      * @param m Moneda ingresada al expendedor, se obtiene su valor con m.getValor()
      * @param x Numero ingresado al expendedor, se utiliza para checkear que producto
      * quiere comprar el comprador*/
+
     public void comprarProducto(Moneda m, int x) throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException{
         Producto p=null;
         int vuelto=0;

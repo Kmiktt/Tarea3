@@ -12,20 +12,26 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+/**JPanel encargado de representar el último objeto que se compró de expendedor.*/
 public class PanelCompra extends JPanel {
     private Producto p;
     private BufferedImage img;
-    public PanelCompra (Producto d, int x, int y){
-        p = d;
+    /**Metodo constructor de PanelCompra, guarda*/
+    public PanelCompra (int x, int y){
         this.setBackground(new Color(0,0,0,0));
         this.setBounds(x,y,300,50);
 
     }
+    /**Override de paintComponent, obtiene el producto de Expendedor usando el metodo
+     * static de getExpendedor, utiliza el metodo de consumir para usar la imagen
+     * correspondiente, y si es que el producto no es un Dulce, rota la imagen para que
+     * se vea mejor dentro del espacio de PanelCompra*/
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         p = PanelExpendedor.getExpendedor().showProducto();
+        if(p==null) return;
         String check = p.consumir();
         try {img = ImageIO.read(new File("src/main/resources/"+check+".png"));}
         catch (IOException e) {

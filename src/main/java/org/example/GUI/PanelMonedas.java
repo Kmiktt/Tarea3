@@ -10,10 +10,14 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+/**JPanel encargado de mostrar el depósito de Monedas de vuelto del expendedor*/
 public class PanelMonedas extends JPanel {
     private Deposito<Moneda>dp;
     private ImgDim dims;
-    private String fna;
+    private String fna ="";
+    /**Constructor de PanelMonedas, guarda la dirección del Deposito y la posición del panel
+     * @param d Dirección del deposito de monedas
+     * @param */
     public PanelMonedas(Deposito d, int x, int y){
         super();
         dp = d;

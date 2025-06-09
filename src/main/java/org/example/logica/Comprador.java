@@ -15,6 +15,8 @@ public class Comprador{
      * @param exp Referencia al expendedor al cual se le va a comprar el Producto*/
     public Comprador(Expendedor exp)  {
         expen=exp;
+        monedero = new ArrayList<Moneda>();
+        monedero.add(new Moneda1000());
     }
 
     public void ComprarBebida(int i,int cualBebida) throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException {
